@@ -1,4 +1,36 @@
-# parsing_analysis
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
 
-parsing_analysis/hh.csv
+# Virtual Environment
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+*.npy
+*.csv
+*.pkl
+*.joblib
+
+# Parsing analysis
 parsing_analysis/__pycache__/
+
+# Resources (but keep model files)
+resources/
+!resources/.gitkeep
