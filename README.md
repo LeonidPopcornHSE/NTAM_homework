@@ -46,6 +46,39 @@ python simple_train.py
 python app.py parsing_analysis/x_data.npy
 ```
 
+## Часть 3: Классификация уровня IT-специалистов (PoC)
+
+### Требования
+Построить модель, которая по данным резюме предсказывает уровень (junior/middle/senior).
+
+### Структура
+- `level_classification/` – все файлы, относящиеся к этой работе.
+  - `config.py` – параметры и пути.
+  - `prepare_data.py` – загрузка и фильтрация данных.
+  - `train_model.py` – основной скрипт обучения и оценки.
+  - `confusion_matrix.png` – пример визуализации (генерируется).
+  - `feature_importance.csv` – важность признаков.
+
+### Как запустить
+```bash
+python level_classification/train_model.py
+```
+
+### В процессе выполнения:
+1. Загружаются данные из parsing_analysis/hh.csv (путь можно изменить в config.py).
+2. Отфильтровываются только IT-резюме.
+3. По полю с опытом работы формируется целевая переменная (level).
+4. Строятся признаки: логарифм зарплаты, возраст, группа города, количество навыков, бинарные флаги технологий, тип занятости и график.
+5. Обучается Random Forest с учётом дисбаланса классов.
+6. Выводится отчёт о классификации (precision, recall, f1-score) и матрица ошибок.
+7. Сохраняются:
+    - модель resources/level_model.pkl
+    - стандартизатор resources/level_scaler.pkl
+    - кодировщик меток resources/level_encoder.pkl
+    - график матрицы ошибок level_classification/confusion_matrix.png
+    - важность признаков level_classification/feature_importance.csv
+
+
 ## Особенности реализации
 
 ### Часть 1 (Парсинг):
